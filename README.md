@@ -17,9 +17,13 @@ Based on the reference fasta and GFF annotation file, read-depth of sites on gen
   ![Screen Shot 2021-12-30 at 12 17 55 PM](https://user-images.githubusercontent.com/63678158/147781946-80e304e0-18df-4d83-945c-684ae22d5115.png)
 
 ### Estimate read-depth for single-copy region
-The median value of read-coverage per gene was used to fit a gaussian mixture model, and parameters (mean and standard deviation) are estimated based on the observations. 
-<code> Rscript single_copy_coverage.R -RD mean_depth.txt -O dir </code> <br>
-NOTE: the "mean_depth.txt" file is the output from the first step.
+Using the median value of read-depth per gene as observations to fit a gaussian mixture model, and model parameters (mean and standard deviation) are estimated from it. <br>
+<code> Rscript single_copy_depth.R -RD depth_per_gene.txt -O [dir] </code> <br>
+For inputs: 
+The "depth_per_gene.txt" file is the output from the last step;
+The [dir] folder should keep consistent as it is in the last step. 
+Output files:
+- Parameter 
 ### Then, parameters was utilized for the estimation of copy-number variation of given site. 
 <code> Rscript gene_CNV.R -RD pos_depth.txt -fit depth_fit.txt -O dir </code> <br>
 NOTE: pos_depth.txt and depth_fit.txt are output from the first and second step, respectively. 
