@@ -30,9 +30,8 @@ Output files: <br>
 ### Estimate copy number for each site
 The read-depth on each site was devided by the estimated single-copy read-depth to get estimated copy number (column: norm_depth). <br>
 <code> Rscript pos_CNV.R -RD [read_depth.txt] -fit [depth_fit.txt] -O [output] </code> <br>
+Most of sites with estimated norm_depth of ~1 <br>
 ![Screen Shot 2021-12-30 at 1 36 12 PM](https://user-images.githubusercontent.com/63678158/147786442-a0e4d48c-ad56-4e4f-8128-bf3b6f363b2f.png)
-Most of sites with estimated norm_depth of ~1
-
 
 ### Filter sites on gene transcribed region
 To prepare exon_table for this step, see my other repo (gff_script) for detail. 
