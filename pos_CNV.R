@@ -24,13 +24,13 @@ out <- argv$output
 RD_df <- read.table(RD, header = T, sep = "\t")
 fit_df <- read.table(fit, header = T, sep = "\t")
 fit_mean <- fit_df[1, "mean"] # mean of single-copy coverage
-fit_sd <- fit_df[1, "sd"] # standard deviation of single-copy coverage distribution
+# fit_sd <- fit_df[1, "sd"] # standard deviation of single-copy coverage distribution
 ###
 # RD_df$read_depth <- ifelse((RD_df$read_depth < 3) | (RD_df$read_depth <= fit_mean*0.1), 0, RD_df$read_depth) # filter noise mapping
 RD_df$norm_depth <- round(RD_df$read_depth/fit_mean, 2)
-RD_df$p <- dnorm(RD_df$read_depth, mean = fit_mean, sd = fit_sd)
-RD_df$padj <- p.adjust(RD_df$p, method = "bonferroni")
+# RD_df$p <- dnorm(RD_df$read_depth, mean = fit_mean, sd = fit_sd)
+# RD_df$padj <- p.adjust(RD_df$p, method = "bonferroni")
 
 # read_depth, norm_depth, p, padj
 
-write.table(RD_df, file.path(out, "CNV.txt"), sep = "\t", quote = F, row.names = F)
+write.table(RD_df, file.path(out, "pos_CNV.txt"), sep = "\t", quote = F, row.names = F)
