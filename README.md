@@ -19,17 +19,24 @@ Based on the reference fasta and GFF annotation file, read-depth of sites on gen
 ### Estimate read-depth for single-copy region
 Using the median value of read-depth per gene as observations to fit a gaussian mixture model, and model parameters (mean and standard deviation) are estimated from it. <br>
 <code> Rscript single_copy_depth.R -RD depth_per_gene.txt -O [dir] </code> <br>
-For inputs: 
-The "depth_per_gene.txt" file is the output from the last step;
-The [dir] folder should keep consistent as it is in the last step. 
-Output files:
-- Parameter 
-### Then, parameters was utilized for the estimation of copy-number variation of given site. 
+For inputs: <br>
+The "depth_per_gene.txt" file is the output from the last step; <br>
+The [dir] folder should keep consistent as it is in the last step. <br>
+Output files: <br>
+- fitting parameters are in the file "depth_fit.txt" (mean value used as the single-copy read-depth); <br>
+- PDF file of observations used for modeling and where the mean-value sit in the observations. <br>
+![Screen Shot 2021-12-30 at 1 17 19 PM](https://user-images.githubusercontent.com/63678158/147785488-522c60a3-8e8d-4350-b2f6-38e32fdc4a08.png)
+
+### Filter sites on gene transcribed region
+To 
 <code> Rscript gene_CNV.R -RD pos_depth.txt -fit depth_fit.txt -O dir </code> <br>
 NOTE: pos_depth.txt and depth_fit.txt are output from the first and second step, respectively. 
+
 ### To really focus on the copy variation on transcribed gene region, we filter sites based on exon-table (see my repo of gff_script for detail)
-<code> python exon_CNV.py -exon <exon_tab> -CNV CNV.txt -O dir </code> <br>
+
+<code> python exon_CNV.py -exon [exon_tab] -CNV [CNV.txt] -O dir </code> <br>
 NOTE: CNV.txt is output from last step. You need to make sure dir is the same for separate steps. 
+
 ### Based on the normalized read-coverage on gene exon region, copy number variation per gene was estimated. 
 <code> python CNV_estimate.py -CNV <exon.txt> -O <output> </code> <br>
 The default cutoff of padj is 0.05. When more than 65% sites for each gene show single-copy, gene was assigned as single-copy number. <br>  
