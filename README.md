@@ -7,8 +7,13 @@ To start, you need to prepare the following files:
 3. DNA-seq alignment in BAM format (sorted and indexed)
 
 ### We started from reading BAM files for read-coverage information, and sites on gene region with window size of 100 bp are used for collecting. 
-<code> python gene_coverage.py -ref [ref] -gtf [gtf] -bam <bam> -O <dir> </code>
-- If the <dir> not exists, it will create a new folder. Under the folder, output files will be written into, including pos_depth.txt and mean_depth.txt files. The pos_depth.txt file is read-coverage for sites on gene region with step size of 100 bp. [Example]![Screen Shot 2021-12-30 at 12 13 00 PM](https://user-images.githubusercontent.com/63678158/147781629-e1a2d72b-6672-4304-9a55-a79423ea243c.png)
+<code> python read_depth_gene.py -ref [ref] -gtf [gtf] -bam [bam] -O [dir] </code>
+- If the [dir] not exists, it will create a new folder. 
+- Under the folder, output files will be written into, including pos_depth.txt and mean_depth.txt files. 
+- The pos_depth.txt file is read-depth for sites on gene region with default step size of 100 bp.
+  ![Screen Shot 2021-12-30 at 12 13 00 PM](https://user-images.githubusercontent.com/63678158/147781629-e1a2d72b-6672-4304-9a55-a79423ea243c.png)
+The depth_per_gene.txt file is depth 
+  ![Screen Shot 2021-12-30 at 12 17 55 PM](https://user-images.githubusercontent.com/63678158/147781946-80e304e0-18df-4d83-945c-684ae22d5115.png)
 
 ### The median value of read-coverage per gene was used to fit a gaussian mixture model, and parameters (mean and standard deviation) are estimated based on the observations. 
 <code> Rscript single_copy_coverage.R -RD mean_depth.txt -O dir </code> <br>
