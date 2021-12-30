@@ -13,10 +13,11 @@ Based on the reference fasta and GFF annotation file, read-depth of sites on gen
 - Under the folder, output files will be written into, including pos_depth.txt and mean_depth.txt files. <br>
 - The pos_depth.txt file is read-depth for sites on gene region with default step size of 100 bp. <br>
   ![Screen Shot 2021-12-30 at 12 13 00 PM](https://user-images.githubusercontent.com/63678158/147781629-e1a2d72b-6672-4304-9a55-a79423ea243c.png)
-- The depth_per_gene.txt file is calculated read-depth for each gene based on the mean and median value of depth on collected gene sites. <br> 
+- The depth_per_gene.txt file is calculated read-depth for each gene based on the mean and median value of depth on collected gene sites. The number of sites per gene was indicated as "size" in the output file. <br> 
   ![Screen Shot 2021-12-30 at 12 17 55 PM](https://user-images.githubusercontent.com/63678158/147781946-80e304e0-18df-4d83-945c-684ae22d5115.png)
 
-### The median value of read-coverage per gene was used to fit a gaussian mixture model, and parameters (mean and standard deviation) are estimated based on the observations. 
+### Estimate read-depth for single-copy region
+The median value of read-coverage per gene was used to fit a gaussian mixture model, and parameters (mean and standard deviation) are estimated based on the observations. 
 <code> Rscript single_copy_coverage.R -RD mean_depth.txt -O dir </code> <br>
 NOTE: the "mean_depth.txt" file is the output from the first step.
 ### Then, parameters was utilized for the estimation of copy-number variation of given site. 
