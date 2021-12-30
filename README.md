@@ -27,16 +27,22 @@ Output files: <br>
 - PDF file of observations used for modeling and where the mean-value sit in the observations. <br>
 ![Screen Shot 2021-12-30 at 1 17 19 PM](https://user-images.githubusercontent.com/63678158/147785488-522c60a3-8e8d-4350-b2f6-38e32fdc4a08.png)
 
+### Estimate copy number for each site
+The read-depth on each site was devided by the estimated single-copy read-depth to get estimated copy number (column: norm_depth). <br>
+<code> Rscript pos_CNV.R -RD [read_depth.txt] -fit [depth_fit.txt] -O [output] </code> <br>
+![Screen Shot 2021-12-30 at 1 36 12 PM](https://user-images.githubusercontent.com/63678158/147786442-a0e4d48c-ad56-4e4f-8128-bf3b6f363b2f.png)
+Most of sites with estimated norm_depth of ~1
+
+
 ### Filter sites on gene transcribed region
-To 
+To prepare exon_table for this step, see my other repo (gff_script) for detail. 
 <code> Rscript gene_CNV.R -RD pos_depth.txt -fit depth_fit.txt -O dir </code> <br>
 NOTE: pos_depth.txt and depth_fit.txt are output from the first and second step, respectively. 
-
-### To really focus on the copy variation on transcribed gene region, we filter sites based on exon-table (see my repo of gff_script for detail)
 
 <code> python exon_CNV.py -exon [exon_tab] -CNV [CNV.txt] -O dir </code> <br>
 NOTE: CNV.txt is output from last step. You need to make sure dir is the same for separate steps. 
 
-### Based on the normalized read-coverage on gene exon region, copy number variation per gene was estimated. 
+### Estimate copy number variation on gene-basis
+
 <code> python CNV_estimate.py -CNV <exon.txt> -O <output> </code> <br>
 The default cutoff of padj is 0.05. When more than 65% sites for each gene show single-copy, gene was assigned as single-copy number. <br>  
