@@ -33,8 +33,9 @@ The read-depth on each site was devided by the estimated single-copy read-depth 
 Most of sites with estimated norm_depth of ~1 <br>
 ![Screen Shot 2021-12-30 at 1 36 12 PM](https://user-images.githubusercontent.com/63678158/147786442-a0e4d48c-ad56-4e4f-8128-bf3b6f363b2f.png)
 
-### Filter sites on gene transcribed region
-To prepare exon_table for this step, see my other repo (gff_script) for detail. 
+### Filter sites on transcribed gene region
+For gene copy number variation, we are interested in the variation happened on exon region. To achieve it, sites outside of gene exon are filtered out. <br>
+To prepare exon_table for this step, see my repo (gff_script) for detail. 
 <code> Rscript gene_CNV.R -RD pos_depth.txt -fit depth_fit.txt -O dir </code> <br>
 NOTE: pos_depth.txt and depth_fit.txt are output from the first and second step, respectively. 
 
