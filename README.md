@@ -1,4 +1,4 @@
-# Copy number variation for the two-spotted spider mites (T. urticae)
+# Copy number variation in <i>Tetranychus urticae</i> (the two-spotted spider mite)
 
 This pipeline was developed for estimating the copy nubmer variation of genes (only transcribed region of interest)
 To start, you need to prepare the following files:
