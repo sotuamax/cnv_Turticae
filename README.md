@@ -12,9 +12,7 @@ Based on the reference fasta and GFF annotation file, read-depth of sites on gen
 - If the [dir] not exists, it will create a new folder. <br>
 - Under the folder, output files will be written into, including pos_depth.txt and mean_depth.txt files. <br>
 - The pos_depth.txt file is read-depth for sites on gene region with default step size of 100 bp. <br>
-  ![Screen Shot 2021-12-30 at 12 13 00 PM](https://user-images.githubusercontent.com/63678158/147781629-e1a2d72b-6672-4304-9a55-a79423ea243c.png)
 - The depth_per_gene.txt file is calculated read-depth for each gene based on the mean and median value of depth on collected gene sites. The number of sites per gene was indicated as "size" in the output file. <br> 
-  ![Screen Shot 2021-12-30 at 12 17 55 PM](https://user-images.githubusercontent.com/63678158/147781946-80e304e0-18df-4d83-945c-684ae22d5115.png)
 
 ### Estimate read-depth for single-copy region
 Using the median value of read-depth per gene as observations to fit a gaussian mixture model, and model parameters (mean and standard deviation) are estimated from it. <br>
@@ -25,13 +23,12 @@ The [dir] folder should keep consistent as it is in the last step. <br>
 Output files: <br>
 - fitting parameters are in the file "depth_fit.txt" (mean value used as the single-copy read-depth); <br>
 - PDF file of observations used for modeling and where the mean-value sit in the observations. <br>
-![Screen Shot 2021-12-30 at 1 17 19 PM](https://user-images.githubusercontent.com/63678158/147785488-522c60a3-8e8d-4350-b2f6-38e32fdc4a08.png)
 
 ### Estimate copy number for each site
 The read-depth on each site was devided by the estimated single-copy read-depth to get estimated copy number (column: norm_depth). <br>
 <code> Rscript pos_CNV.R -RD [read_depth.txt] -fit [depth_fit.txt] -O [output] </code> <br>
 Most of sites with estimated norm_depth of ~1 <br>
-![Screen Shot 2021-12-30 at 1 36 12 PM](https://user-images.githubusercontent.com/63678158/147786442-a0e4d48c-ad56-4e4f-8128-bf3b6f363b2f.png)
+
 
 ### Filter sites on transcribed gene region
 For gene copy number variation, we are interested in the variation happened on exon region. To achieve it, sites outside of gene exon are filtered out. <br>
