@@ -5,13 +5,23 @@ The pipeline was developed for estimating gene CNV that specificially focus on g
 To start, you need to prepare the following files:
 1. Reference genome in fasta format
 2. GFF annotation file for the reference genome (sorted and indexed)
-3. illumina DNA-seq alignment in BAM format (sorted and indexed)
+3. illumina DNA-seq alignment in BAM format (sorted and indexed, you should have an estimation regarding to the coverage of the BAM file)
 
-### Collect read-depth information from BAM file 
-Based on the reference fasta and GFF annotation file, read-depth of sites on gene region is collected. <br>
-<code> python read_depth_ongene.py -ref [ref] -gtf [gtf] -bam [bam] -O [dir] </code> <br>
-- If the [dir] not exists, it will create a new folder. <br>
-- Under the folder, output files will be written into, including pos_depth.txt and mean_depth.txt files. <br>
+The pipeline was written in Python and R, the dependencies include:
+Python v3.7: pandas, numpy, mpi4py
+R v4.1
+
+Run the following commands for gene CNV estimation:
+Step 1: count coverage depth on gene coding region (default stepsize 1 bp).
+<code> python gene_coverage.py [ref] [gtf] [bam] -O [out] </code> <br>
+- A new "out" folder will be created (if not exist) and all output files will be written under the folder.
+- File named "pos_depth.txt" will be generated in the folder.
+<b>Step 2</b>: report the single-copy coverage depth for the BAM file.  
+<code> Rscript single_depth.R [out]/pos_depth.txt [cov_est] -O [out] </code> <br>
+cov_est: the estimated coverage for the BAM file
+out: output folder (it should be the same as in "Step 1")
+Step 3: generate gene CNV 
+<code> python gene_CNV.py [out]/pos_depth.txt [out]/single_cov.txt -O [out] </code> <br>
 - The pos_depth.txt file is read-depth for sites on gene region with default step size of 100 bp. <br>
 - The depth_per_gene.txt file is calculated read-depth for each gene based on the mean and median value of depth on collected gene sites. The number of sites per gene was indicated as "size" in the output file. <br> 
 
