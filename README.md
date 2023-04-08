@@ -1,10 +1,11 @@
 # Copy number variation in <i>Tetranychus urticae</i> (the two-spotted spider mite)
+## This is a repo for the study of gene copy number variation (CNV) of the generalist spider mite herbivore <i>Tetranychus urticae</i>. 
 
-This pipeline was developed for estimating the copy nubmer variation of genes (only transcribed region of interest)
+The pipeline was developed for estimating gene CNV that specificially focus on gene coding region.
 To start, you need to prepare the following files:
 1. Reference genome in fasta format
-2. GFF annotation for the reference (sorted and indexed)
-3. DNA-seq alignment in BAM format (sorted and indexed)
+2. GFF annotation file for the reference genome (sorted and indexed)
+3. illumina DNA-seq alignment in BAM format (sorted and indexed)
 
 ### Collect read-depth information from BAM file 
 Based on the reference fasta and GFF annotation file, read-depth of sites on gene region is collected. <br>
