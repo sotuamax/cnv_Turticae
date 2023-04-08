@@ -1,0 +1,6 @@
+name	tig	genome_start	genome_end	strand
+G228S	chromosome_2	17185677	17185679	-
+F439W/Y/C	chromosome_2	17185044	17185046	-
+T391A	chromosome_2	17185188	17185190	-
+G436A	chromosome_2	17185053	17185055	-
+A309S	chromosome_2	17185434	17185436	-
