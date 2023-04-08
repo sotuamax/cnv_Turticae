@@ -21,7 +21,7 @@ def args_parser():
         Usage: python gene_coverage.py -ref <ref> -gtf <gtf> -bam <bam> -O <outputdir>")
     parser.add_argument("ref", help = "reference fasta file. ")
     parser.add_argument("bam", help = "the bam file for read counts (sorted). ")
-    parser.add_argument("contig", "--contig", help = "assign contig of interest. ", nargs = "?", required = False)
+    parser.add_argument("-chr", "--chromosome", help = "assign chromosome of interest. ", nargs = "?", required = False)
     parser.add_argument("-range", "--range", nargs = 2, help = "contig range for read-coverage screening. ")
     parser.add_argument("-step", "--stepsize", type = int, default = 100, help = "step size (default 100 bp)")
     parser.add_argument("-quality", "--quality", type = int, required = False, default = 0, help = "mapping quality (default: 0)")
