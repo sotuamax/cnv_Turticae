@@ -8,7 +8,7 @@ To start, you need to prepare the following files: <br>
 3. illumina DNA-seq alignment in BAM format (sorted and indexed, you should have an estimation regarding to the coverage of the BAM file) <br>
 
 #### The pipeline was written in Python and R, the dependencies include: <br>
-Python v3.7: pandas, numpy, mpi4py <br>
+Python v3.7: pysam, pandas, numpy, Biopython, mpi4py <br>
 R v4.1 <br>
 
 #### Run the following commands for gene CNV estimation: <br>
@@ -43,5 +43,13 @@ end: end position for coverage counting <br>
 size: step size <br>
 out: output file (prefix) <br>
 
-#### 
+#### To recover the amino acid allele at given target-site: <br>
+Run the script "target_site_allele.py" <br>
+<code> python target_site_allele.py [bam] [fof] -btype <DNA/RNA> -out [out] </code> <br>
+bam: bam file used for recovering <br>
+fof: formated target site position <br>
+btype: either be "DNA" or "RNA" <br>
+out: output file name <br>
+For example about how to format "fof" the target-site position file, see folder "data". <br>
+
 
