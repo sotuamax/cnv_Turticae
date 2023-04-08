@@ -12,6 +12,7 @@ Python v3.7: pandas, numpy, mpi4py <br>
 R v4.1 <br>
 
 #### Run the following commands for gene CNV estimation: <br>
+All the scripts under "gCNV" folder. <br>
 <b>Step 1</b>: count coverage depth on gene coding region (default stepsize 1 bp). <br>
 <code> python gene_coverage.py [ref] [gtf] [bam] -O [out] </code> <br>
 - A new "out" folder will be created (if not exist) and all output files will be written under the folder. <br>
