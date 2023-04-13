@@ -42,6 +42,18 @@ start: start position for coverage counting <br>
 end: end position for coverage counting <br>
 size: step size <br>
 out: output file (prefix) <br>
+NOTE: this script works only for BAM file with <b>illumina-read</b> aligned against to the reference genome (not works on long-read sequencing data). 
+
+#### To count coverage at a specific region of interest: <br>
+Run the script "coverage.py" <br>
+<code> mpiexec -n 10 python coverage.py [ref] [bam] -chr [chr] -range [start] [end] -step [stepsize] -O [out] </code> <br>
+chr: chromosome of interest <br>
+start: start position for coverage counting <br>
+end: end position for coverage counting <br>
+size: step size <br>
+out: output file (prefix) <br>
+NOTE: this script works only for BAM file with <b>illumina-read</b> aligned against to the reference genome (not works on long-read sequencing data). 
+NOTE: this script works both for <b>illumina-read</b> and <b>pacbio-read</b> (long-read sequencing). You can assign multiple cores to support parallel running (e.g., use 10 cores, "mpiexec -n 10"). 
 
 #### To recover the amino acid allele at given target-site: <br>
 Run the script "target_site_allele.py" <br>
