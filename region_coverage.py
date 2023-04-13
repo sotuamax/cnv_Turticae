@@ -33,7 +33,7 @@ def bam_coverage(args, seq_dict):
     '''takes gene position table and bam file, measure the read-coverage on given position with known step-size. '''
     # out is rank named
     bam = args.bam
-    tig = args.contig
+    tig = args.chromosome
     range1 = int(args.range[0])
     range2 = int(args.range[1])
     step = args.stepsize
@@ -67,7 +67,7 @@ def bam_coverage(args, seq_dict):
 
 def main():
     args = args_parser()
-    ref = args.reference
+    ref = args.ref
     seq = SeqIO.parse(ref, "fasta")
     seq_dict = SeqIO.to_dict(seq)
     ###
