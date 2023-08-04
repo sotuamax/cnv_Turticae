@@ -15,7 +15,6 @@ update on Feb-01-2023.
 Do not collect the median and mean coverage for each gene, use the raw site coverage on gene CDS region. 
 """
 
-
 import pandas as pd
 import argparse
 import os
