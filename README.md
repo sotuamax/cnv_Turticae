@@ -5,16 +5,16 @@
 - []
 
 ## Programs used / Dependencies 
-- python3+ (pysam, pandas, numpy, Biopython, mpi4py)
+- python3+ (modules: pysam, pandas, numpy, Biopython, mpi4py)
 - R v4.1
 - 
 
 [NOTE] To enable parallel processing, python model mpi4py need to be installed. 
 
 ## Gene CNV estimation 
-This pipeline was developed for estimating CNV that specificially on gene coding region. 
+This pipeline was developed for estimating CNV that focus on gene coding regions. 
 <br>
-Data for input: <br>
+Input data: <br>
 1. Reference genome in fasta format <br>
 2. GTF annotation file for the reference genome (sorted and indexed) <br>
 3. Illumina DNA-seq alignment in BAM format (sorted and indexed) <br>
@@ -28,15 +28,12 @@ python gene_coverage.py [ref] [gtf] [bam] -O [out]
 # gtf: gtf file for the reference genome <br>
 # bam: bam of DNA-read aligned to reference genome <br>
 # out: output folder
-
+<br>
+# report the single-copy coverage depth for the BAM file
 ```
-
-
-
-- A new "out" folder will be created (if not exist) and all output files will be written under the folder. <br>
 - File named "pos_depth.txt" (coverage at gene coding positions) will be generated under the \[out\] folder. <br>
 
-<b>Step 2</b>: report the single-copy coverage depth for the BAM file.  <br>
+.  <br>
 <code> Rscript single_depth.R [out]/pos_depth.txt [cov_est] -O [out] </code> <br>
 cov_est: the estimated coverage for the BAM file <br>
 out: output folder (it should be the same as in "Step 1") <br>
