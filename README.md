@@ -20,6 +20,7 @@ Data for input: <br>
 3. Illumina DNA-seq alignment in BAM format (sorted and indexed) <br>
 <br>
 All the scripts under "gCNV" folder
+
 ```bash
 # count coverage depth on gene coding region (default stepsize 1 bp)
 python gene_coverage.py [ref] [gtf] [bam] -O [out]
