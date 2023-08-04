@@ -1,24 +1,37 @@
-# Copy number variation in <i>Tetranychus urticae</i> (the two-spotted spider mite)
-## This is a repo for the study of gene copy number variation (CNV) of the generalist spider mite herbivore <i>Tetranychus urticae</i>. 
+# Gene copy number variation (CNV) in generalist herbivore of <i>Tetranychus urticae</i> (the two-spotted spider mite) 
 
-#### The pipeline was developed for estimating gene CNV that specificially focus on gene coding region.
-To start, you need to prepare the following files: <br>
+## Table of Contents
+- [Gene CNV estimation](#Gene-CNV-estimation)
+- []
+
+## Programs used / Dependencies 
+- python3+ (pysam, pandas, numpy, Biopython, mpi4py)
+- R v4.1
+- 
+
+[NOTE] To enable parallel processing, python model mpi4py need to be installed. 
+
+## Gene CNV estimation 
+This pipeline was developed for estimating CNV that specificially on gene coding region. 
+<br>
+Data for input: <br>
 1. Reference genome in fasta format <br>
-2. GFF annotation file for the reference genome (sorted and indexed) <br>
-3. illumina DNA-seq alignment in BAM format (sorted and indexed, you should have an estimation regarding to the coverage of the BAM file) <br>
+2. GTF annotation file for the reference genome (sorted and indexed) <br>
+3. Illumina DNA-seq alignment in BAM format (sorted and indexed) <br>
+<br>
+All the scripts under "gCNV" folder
+```bash
+# count coverage depth on gene coding region (default stepsize 1 bp)
+python gene_coverage.py [ref] [gtf] [bam] -O [out]
+# ref: reference genome in fasta file <br>
+# gtf: gtf file for the reference genome <br>
+# bam: bam of DNA-read aligned to reference genome <br>
+# out: output folder
 
-#### The pipeline was written in Python and R, the dependencies include: <br>
-Python v3.7: pysam, pandas, numpy, Biopython, mpi4py <br>
-R v4.1 <br>
+```
 
-#### Run the following commands for gene CNV estimation: <br>
-All the scripts under "gCNV" folder. <br>
-<b>Step 1</b>: count coverage depth on gene coding region (default stepsize 1 bp). <br>
-<code> python gene_coverage.py [ref] [gtf] [bam] -O [out] </code> <br>
-ref: reference genome in fasta file <br>
-gtf: gtf file for the reference genome <br>
-bam: bam of reads aligned to reference genome <br>
-out: output folder
+
+
 - A new "out" folder will be created (if not exist) and all output files will be written under the folder. <br>
 - File named "pos_depth.txt" (coverage at gene coding positions) will be generated under the \[out\] folder. <br>
 
@@ -34,7 +47,7 @@ out: output folder (it should be the same as in "Step 1") <br>
 out: output folder (it should be the same as in "Step 1" and "Step 2") <br>
 - File named "gene_cnv.txt" will be generated under the \[out\] folder. <br>
 
-#### To count coverage at a specific region of interest: <br>
+To count coverage at a specific region of interest: <br>
 Run the script "region_coverage.py" <br>
 <code> python region_coverage.py [ref] [bam] -chr [chr] -range [start] [end] -step [size] -O [out] </code> <br>
 chr: chromosome of interest <br>
