@@ -28,21 +28,18 @@ python gene_coverage.py [ref] [gtf] [bam] -O [out]
 # gtf: gtf file for the reference genome <br>
 # bam: bam of DNA-read aligned to reference genome <br>
 # out: output folder
-<br>
-# report the single-copy coverage depth for the BAM file
+
+# estimate single-copy coverage depth for the BAM file
+Rscript single_depth.R [out]/pos_depth.txt [cov_est] -O [out]
+# cov_est: the estimated coverage for the BAM file <br>
+
+# estimate gene CNV based on gene coding region coverage depth
+python gene_CNV.py [out]/pos_depth.txt [out]/single_cov.txt -O [out]
+
 ```
 - File named "pos_depth.txt" (coverage at gene coding positions) will be generated under the \[out\] folder. <br>
-
-.  <br>
-<code> Rscript single_depth.R [out]/pos_depth.txt [cov_est] -O [out] </code> <br>
-cov_est: the estimated coverage for the BAM file <br>
-out: output folder (it should be the same as in "Step 1") <br>
 - File named "single_cov.txt" (single copy coverage) will be generated under the \[out\] folder <br>
 - File named "histogram.pdf" (coverage distribution) will be generated under the \[out\] folder <br>
-
-<b>Step 3</b>: estimate gene CNV based on gene coding region coverage depth <br>
-<code> python gene_CNV.py [out]/pos_depth.txt [out]/single_cov.txt -O [out] </code> <br>
-out: output folder (it should be the same as in "Step 1" and "Step 2") <br>
 - File named "gene_cnv.txt" will be generated under the \[out\] folder. <br>
 
 To count coverage at a specific region of interest: <br>
