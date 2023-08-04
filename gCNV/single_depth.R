@@ -6,10 +6,7 @@
 # remove the disperse parameters 
 
 suppressMessages(library("argparse"))
-suppressMessages(library("ggplot2"))
 suppressMessages(library("stats4"))
-suppressMessages(library("mclust"))
-
 
 parse_arg <- function() {
     # accept arguments from terminal
