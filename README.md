@@ -110,6 +110,13 @@ Step 3: Scaffold contigs based on the parsed gff file
 python scaffold_tig.py 
 ```
 
+To caculate the [N50](https://en.wikipedia.org/wiki/N50,_L50,_and_related_statistics#:~:text=N50%20statistic%20defines%20assembly%20quality,of%20the%20total%20assembly%20length) for contigs and scaffolds, run: 
+
+```bash
+python N50.py [fasta]
+# fasta file for which N50 value calculated on 
+```
+
 ## Amino acid at target-site 
 
 ```bash
@@ -122,7 +129,7 @@ python target_site_allele.py [bam] [fof] -btype <DNA/RNA> -out [out]
 ```
 For example about how to format "fof" the target-site position file, see folder "data"
 
-
+## 
 
 
 
