@@ -104,6 +104,12 @@ python gff_parse.py [target_gff] [ref_gff] -vis vis_gff.R -O [out]
 # -O: output file name (prefix)
 ```
 
+Step 3: Scaffold contigs based on the parsed gff file 
+
+```bash
+python scaffold_tig.py 
+```
+
 ## Amino acid at target-site 
 
 ```bash
