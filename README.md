@@ -9,7 +9,7 @@
 ## Programs used / Dependencies 
 - python 3+ (modules: pysam, pandas, numpy, Biopython, mpi4py)
 - R v4.1
-- [liftoff v1.6+](https://github.com/agshumate/Liftoff)
+- [Liftoff v1.6+](https://github.com/agshumate/Liftoff)
 
 [NOTE] To enable parallel processing, python model mpi4py need to be installed. 
 
@@ -83,7 +83,7 @@ Input data: <br>
 3. GTF annotation file for the reference genome (sorted and indexed) <br>
 <br>
 All the scripts under "scaffold" folder: <br>
-Step 1: generate GTF file for the contigs by aligning gene sequences from reference genome to the contigs using [liftoff](https://github.com/agshumate/Liftoff)
+Step 1: generate GTF file for the contigs by aligning gene sequences from reference genome to the contigs using [Liftoff](https://github.com/agshumate/Liftoff)
 
 ```bash
 liftoff [target] [ref] -g [gff] -o [out] -p 24
