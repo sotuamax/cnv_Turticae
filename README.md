@@ -129,7 +129,6 @@ python target_site_allele.py [bam] [fof] -btype <DNA/RNA> -out [out]
 ```
 For example about how to format "fof" the target-site position file, see folder "data"
 
-## 
 
 
 
